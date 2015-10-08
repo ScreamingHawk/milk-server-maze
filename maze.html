@@ -14,6 +14,10 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/main.css">
+		
+		<meta name="google-signin-client_id" content="934884363163-b5get3q0s2bea7p7tb4ignbdmh5ia2j0.apps.googleusercontent.com">
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script src="js/g-sign-in.js" async></script>
 
 		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 	</head>
@@ -23,6 +27,16 @@
 		<![endif]-->
 		<div id="wrap">
 			<div class="container-fluid" style="margin-bottom: 50px;">
+				<div class="pull-right" style="margin-right: 10px; margin-top: 10px;">
+					<div id="g-signin2" class="g-signin2" data-onsuccess="gSignInSuccessOverride" data-theme="dark"></div>
+					<div id="signInArea" class="hidden">
+						<img id="uDP" src="" class="img-circle" style="margin: 5px; width: 25px;"></img>
+						<span>Welcome, <strong id="uName"></strong>!</span>
+						<button id="signOutButton" class="btn btn-danger btn-sm" onclick="signOut();">Sign out</button>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				
 				<div class="hidden-xs" style="margin-top: 50px"></div>
 				<div class="visible-xs" style="margin-top: 10px"></div>
 				<div class="row">
@@ -49,15 +63,6 @@
 								<button type="button" class="btn btn-default" onclick="moveRight();"><i class="fa fa-arrow-right"></i></button>
 							</div>
 						</div>
-						<div id="stats" class="hidden text-center" style="margin-top: 20px;">
-							<p><strong>Stats</strong></p>
-							<p>
-								Number of levels completed: <strong id="statCount">0</strong><br/>
-								Highest level completed: <strong id="statHighest">0</strong><br/>
-								Total time: <strong id="statTotal">0</strong> seconds<br/>
-								Average completion time: <strong id="statAverage">0</strong> seconds
-							</p>
-						</div>
 						<form id="optionsForm" class="form-horizontal" style="margin-top: 20px;">
 							<div class="form-group">
 								<label id="levelOptionText" for="levelOption" class="col-sm-6 control-label">Start at Level</label>
@@ -80,6 +85,15 @@
 								</div>
 							</div>
 						</form>
+						<div id="stats" class="hidden text-center" style="margin-top: 20px;">
+							<p><strong>Stats</strong></p>
+							<p>
+								Number of levels completed: <strong id="statCount">0</strong><br/>
+								Highest level completed: <strong id="statHighest">0</strong><br/>
+								Total time: <strong id="statTotal">0</strong> seconds<br/>
+								Average completion time: <strong id="statAverage">0</strong> seconds
+							</p>
+						</div>
 					</div>
 					<h2 id="overlay" style="position: absolute; margin-top: 150px; width: 100%;" class="text-center hidden">
 						Go!

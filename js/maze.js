@@ -23,12 +23,12 @@ function start(){
 	return false;
 }
 
+
 function restart(){
 	// Show/Hide sections
 	$('#helpText').addClass('hidden');
 	$('#maze').removeClass('hidden');
 	$('#arrowButtons').removeClass('hidden');
-	$('#stats').removeClass('hidden');
 	$('#levelOptionText').text("Jump to Level");
 	// Initialise vars
 	playerPos = [];
@@ -337,4 +337,9 @@ function log(s){
 	if (debug){
 		console.log(s);
 	}
+}
+
+function gSignInSuccessOverride(googleUser){
+	gSignInSuccess(googleUser);
+	$('#stats').removeClass('hidden');
 }
